@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
 
-import Checkbox from "../Checkbox/Checkbox.comp";
+import Checkbox from "../../Checkbox/Checkbox.comp";
 
 class Sidebar extends Component {
   constructor(prop) {
