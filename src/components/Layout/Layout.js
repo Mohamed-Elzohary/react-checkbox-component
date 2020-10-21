@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Layout.css";
 
-import MainContent from "../MainContent/MainContent";
-import Sidebar from "../Sidebar/Sidebar";
+import MainContent from "./MainContent/MainContent";
+import Sidebar from "./Sidebar/Sidebar";
 
 class Layout extends Component {
   constructor(props) {

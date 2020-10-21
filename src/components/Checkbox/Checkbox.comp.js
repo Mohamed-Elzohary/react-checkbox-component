@@ -15,8 +15,8 @@ class Checkbox extends Component {
     var { id, title, onChange } = this.state;
     return (
       <form>
-        <div className="input-cont">
-          <div className="cbx-cont">
+        <label className="input-cont" htmlFor={id}>
+          <div className="input-cbx-cont">
             <label className="label">
               <input
                 className="label__checkbox"
@@ -30,12 +30,12 @@ class Checkbox extends Component {
                 </span>
               </span>
             </label>
-
-            <div id="watched-label-cont">
-              <label htmlFor={id}>{title}</label>
-            </div>
           </div>
-        </div>
+
+          <label id="input-label-cont" htmlFor={id}>
+            {title}
+          </label>
+        </label>
       </form>
     );
   }
