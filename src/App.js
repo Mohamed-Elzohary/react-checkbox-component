@@ -1,13 +1,45 @@
 import React, { Component } from "react";
 import "./styles.css";
 
+import Checkbox from "./components/Checkbox/Checkbox.comp";
+
 class App extends Component {
   constructor(prop) {
     super();
     this.state = {
-      total_lecs: 2,
+      lectures: [
+        {
+          id: 1,
+          title: "الدرس الأول"
+        },
+        {
+          id: 2,
+          title: "الدرس الثاني"
+        },
+        {
+          id: 3,
+          title: "الدرس الثالث"
+        },
+        {
+          id: 4,
+          title: "الدرس الرابع"
+        }
+      ],
+      total_lecs: 0,
       finished_lecs: 0
     };
+  }
+
+  componentDidMount() {
+    if (this.state.lectures.length > 0) {
+      this.setState({
+        total_lecs: this.state.lectures.length
+      });
+    } else {
+      this.setState({
+        total_lecs: 0
+      });
+    }
   }
 
   cbxChange = (e) => {
@@ -28,57 +60,17 @@ class App extends Component {
           <h3>
             {this.state.finished_lecs} / {this.state.total_lecs}
           </h3>
-          <form>
-            <div className="input-cont">
-              <div className="cbx-cont">
-                <label className="label">
-                  <input
-                    className="label__checkbox"
-                    type="checkbox"
-                    id="watched"
-                    onChange={this.cbxChange}
-                  />
-                  <span className="label__text">
-                    <span className="label__check">
-                      <i className="fa fa-check icon"></i>
-                    </span>
-                  </span>
-                </label>
 
-                <div id="watched-label-cont">
-                  <label htmlFor="watched">
-                    الدرس الأول: الكلام في اصطلاح النحويين: الاسم والفعل والحرف
-                  </label>
-                </div>
-              </div>
-            </div>
-          </form>
-
-          <form>
-            <div className="input-cont">
-              <div className="cbx-cont">
-                <label className="label">
-                  <input
-                    className="label__checkbox"
-                    type="checkbox"
-                    id="watched1"
-                    onChange={this.cbxChange}
-                  />
-                  <span className="label__text">
-                    <span className="label__check">
-                      <i className="fa fa-check icon"></i>
-                    </span>
-                  </span>
-                </label>
-
-                <div id="watched-label-cont">
-                  <label htmlFor="watched1">
-                    الدرس الأول: الكلام في اصطلاح النحويين: الاسم والفعل والحرف
-                  </label>
-                </div>
-              </div>
-            </div>
-          </form>
+          {this.state.lectures.map((lecture) => {
+            return (
+              <Checkbox
+                key={lecture.id}
+                id={lecture.id}
+                title={lecture.title}
+                onChange={this.cbxChange}
+              />
+            );
+          })}
         </div>
       </div>
     );
